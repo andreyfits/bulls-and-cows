@@ -6,6 +6,5 @@ export default defineConfig({
     environment: 'node',
     restoreMocks: true,
     sequence: { shuffle: true },
-    passWithNoTests: true,
   },
 });
