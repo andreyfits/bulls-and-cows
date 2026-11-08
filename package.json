@@ -1,0 +1,14 @@
+{
+  "name": "bulls-and-cows",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Bulls and Cows game with a pure functional core written in TypeScript",
+  "type": "module",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "typescript": "~6.0.3"
+  }
+}
