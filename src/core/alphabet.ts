@@ -1,5 +1,5 @@
 import type { Base } from './types.js';
 
-export const getAlphabet = (_base: Base): readonly string[] => {
-  throw new Error('Not implemented');
-};
+const DIGITS = '0123456789abcdef';
+
+export const getAlphabet = (base: Base): readonly string[] => Array.from(DIGITS.slice(0, base));
