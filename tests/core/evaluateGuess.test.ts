@@ -2,16 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import { evaluateGuess } from '../../src/core/evaluateGuess.js';
 import type { Score } from '../../src/core/types.js';
-
-const permutations = (digits: readonly string[], size: number): readonly string[] =>
-  size === 0
-    ? ['']
-    : digits.flatMap((digit) =>
-        permutations(
-          digits.filter((other) => other !== digit),
-          size - 1,
-        ).map((rest) => digit + rest),
-      );
+import { permutations } from '../helpers/permutations.js';
 
 const referenceScore = (secret: string, guess: string): Score => {
   const guessDigits = Array.from(guess);
