@@ -6,3 +6,8 @@ export interface Score {
   readonly bulls: number;
   readonly cows: number;
 }
+
+export interface GameSettings {
+  readonly length: number;
+  readonly base: Base;
+}
