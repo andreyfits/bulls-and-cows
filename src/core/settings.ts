@@ -1,17 +1,16 @@
+import { LENGTHS } from './constants.js';
 import type { Base, GameSettings } from './types.js';
 
-export const isLengthAvailable = (_length: number, _base: Base): boolean => {
-  throw new Error('Not implemented');
-};
+export const isLengthAvailable = (length: number, base: Base): boolean =>
+  LENGTHS.includes(length) && length <= base;
 
-export const getAvailableLengths = (_base: Base): readonly number[] => {
-  throw new Error('Not implemented');
-};
+export const getAvailableLengths = (base: Base): readonly number[] =>
+  LENGTHS.filter((length) => isLengthAvailable(length, base));
 
-export const withBase = (_settings: GameSettings, _base: Base): GameSettings => {
-  throw new Error('Not implemented');
-};
+export const withBase = (settings: GameSettings, base: Base): GameSettings => ({
+  base,
+  length: Math.min(settings.length, base),
+});
 
-export const withLength = (_settings: GameSettings, _length: number): GameSettings => {
-  throw new Error('Not implemented');
-};
+export const withLength = (settings: GameSettings, length: number): GameSettings =>
+  isLengthAvailable(length, settings.base) ? { ...settings, length } : settings;
