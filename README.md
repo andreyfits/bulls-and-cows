@@ -7,6 +7,8 @@ wrong place.
 Written in strict TypeScript as a pure functional core plus a thin DOM shell — no
 framework, no bundler: `tsc` emits ES modules that the browser loads directly.
 
+![Bulls and Cows — settings screen and leaderboard](docs/screenshot.png)
+
 ## Features
 
 - Secrets of 2–6 unique digits in **binary, octal, decimal or hexadecimal**
