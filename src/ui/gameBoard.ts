@@ -42,6 +42,21 @@ const renderStats = (game: GameState, now: number): HTMLElement =>
     renderStat('Time', 'timer', formatDuration(getElapsed(game, now))),
   );
 
+const renderNewGameButton = (
+  variant: 'primary' | 'ghost',
+  onClick: () => void,
+): HTMLButtonElement =>
+  h(
+    'button',
+    {
+      type: 'button',
+      id: 'new-game-button',
+      className: `button button--${variant}`,
+      onclick: onClick,
+    },
+    'New game',
+  );
+
 const renderGuessForm = (props: GameBoardProps): HTMLFormElement => {
   const { settings } = props.game;
 
@@ -96,20 +111,7 @@ const renderGuessForm = (props: GameBoardProps): HTMLFormElement => {
       },
       describeMessage(props),
     ),
-    h(
-      'div',
-      { className: 'card__actions' },
-      h(
-        'button',
-        {
-          type: 'button',
-          id: 'new-game-button',
-          className: 'button button--ghost',
-          onclick: props.onNewGame,
-        },
-        'New game',
-      ),
-    ),
+    h('div', { className: 'card__actions' }, renderNewGameButton('ghost', props.onNewGame)),
   );
 };
 
@@ -135,16 +137,7 @@ const renderResult = (props: GameBoardProps): HTMLElement =>
       `Solved in ${pluralize(props.game.history.length, 'attempt')} and ${formatDuration(getElapsed(props.game, props.now))}.`,
     ),
     h('p', { className: 'rank' }, describeRank(props.rank, props.game)),
-    h(
-      'button',
-      {
-        type: 'button',
-        id: 'new-game-button',
-        className: 'button button--primary',
-        onclick: props.onNewGame,
-      },
-      'New game',
-    ),
+    renderNewGameButton('primary', props.onNewGame),
   );
 
 const renderHistoryItem = (entry: HistoryEntry, attempt: number): HTMLElement =>
